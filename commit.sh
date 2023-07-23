@@ -1,3 +1,4 @@
+#!/bin/bash
 datatime_now=`date "+%Y-%m-%d %H:%M"`
 git config --global user.name "pavlov"
 git config --global user.email "pavlov.web@mail.ru"

@@ -5,8 +5,17 @@
     <title>Title</title>
 </head>
 <body>
-{% if object_list %}
-<h1>{{ object_list }}</h1>
+<br><br><br>
+<form action="{% url 'thanks_page' %}" method="POST">
+    {% csrf_token %}
+    <label>Name</label>
+    <input name="name">
+    <label>Phone</label>
+    <input name="phone">
+    <button type="submit">Send</button>
+</form>
+
+{% if object_list %} <br><br>
 <table border="1">
     <tr bgcolor="#999">
         <td>id</td>

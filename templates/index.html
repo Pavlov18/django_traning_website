@@ -6,12 +6,19 @@
 </head>
 <body>
 <br><br><br>
+
+
+<style>
+    .css_input {
+    color: yellow;
+    background-color: red;
+    }
+</style>
+
+
 <form action="{% url 'thanks_page' %}" method="POST">
     {% csrf_token %}
-    <label>Name</label>
-    <input name="name">
-    <label>Phone</label>
-    <input name="phone">
+    {{ form.as_p }}
     <button type="submit">Send</button>
 </form>
 

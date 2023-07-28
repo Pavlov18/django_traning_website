@@ -1,9 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} тайтл бейс
-{% endblock %}</title>
+    <title>{% block title %}тайтл бейс{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
 <h1>Шапка</h1>

@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
-
-{% block title %}
-тайтл индекс
-{% endblock %}
-
+{% block title %}тайтл индекс{% endblock %}
+{% load static %}
 {% block content %}
 <h2>Данные из индекс</h2>
+<img src="{% static 'img\1.jpg' %}" height="100px">
+
 {% include 'index_old.html' %}
 
 {% endblock %}

@@ -13,6 +13,8 @@ def first_page(request):
     pc_3 = PriceCard.objects.get(pk=3)
     # Из второго класса (pricetable) берем все элементы и передаём в рендер
     price_table = PriceTable.objects.all()
+    # Передаём форму в словарь
+    form = OrderForm()
     # Так как количество передаваемых объектов уже не малое, запишем их все в переменную (словарь) и передадим потом её вместо словаря (для красоты)
     dict_obj = {
         'slider_list': slider_list,
@@ -20,6 +22,7 @@ def first_page(request):
         'pc_2': pc_2,
         'pc_3': pc_3,
         'price_table': price_table,
+        'form': form,
     }
     return render(request, './index.html', dict_obj)
 

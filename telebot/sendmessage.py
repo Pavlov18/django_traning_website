@@ -1,18 +1,17 @@
 import requests
 from .models import TeleSettings
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
-
-token = '6559243464:AAFH0O4JnIZRBZzadOCLLdfQB-BYWtPU6xA'
-chat_id = -912124557
-text = "Test2"
 
 def sendTelegram(tg_name, tg_phone):
     # Создаем переменную и берем объёкт по id 1
 
     settings = TeleSettings.objects.get(pk=1)
 
-    token = str(settings.tg_token)
+    token = os.getenv('TOKEN')
     chat_id = str(settings.tg_chat)
     text = str(settings.tg_message)
 

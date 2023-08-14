@@ -29,14 +29,19 @@ def first_page(request):
 
 # Создаём функцию, которая выводит html страницу Спасибо
 def thanks_page(request):
-    # Получение данных из запроса
-    name = request.POST['name']
-    phone = request.POST['phone']
+    # Перед загрузкой страницы проверим наличие post-запроса
+    if request.POST:
+        # Получение данных из запроса
+        name = request.POST['name']
+        phone = request.POST['phone']
 
-    # Сохранене данных в базу данных. Создаем экземляр класса и методом save сохраняем запрос в БД
-    element = Order(order_name=name, order_phone=phone)
-    element.save()
+        # Сохранене данных в базу данных. Создаем экземляр класса и методом save сохраняем запрос в БД
 
-    sendTelegram(tg_name = name, tg_phone = phone)
+        element = Order(order_name=name, order_phone=phone)
+        element.save()
 
-    return render(request, './thanks.html', {'name': name})
+        sendTelegram(tg_name = name, tg_phone = phone)
+
+        return render(request, './thanks.html', {'name': name})
+    else:
+        return render(request, './thanks.html')

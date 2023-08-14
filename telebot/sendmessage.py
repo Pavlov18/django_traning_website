@@ -14,17 +14,9 @@ def sendTelegram(tg_name, tg_phone):
     # Собираем ссылку-запрос с помощью конкотенации строк
     method = api + token + '/sendMessage'
 
-    # Зададим переменную a и b, которые ищет первую правую и первую левую скобку
-    a = text.find('{')
-    b = text.find('}')
-
-    # Зададим переменную c и b, которые ищет последнюю правую и последнюю левую скобку
-    c = text.rfind('{')
-    d = text.rfind('}')
-
-    part_1 = text[0:a]
-    part_2 = text[b+1:c]
-    part_3 = text[d:-1]
+    part_1 = text[0:text.find('{')]
+    part_2 = text[text.find('}')+1:text.rfind('{')]
+    part_3 = text[text.rfind('}'):-1]
 
     # Сконкотенируем все 3 части и присвоим в переменную, которую передадим в тело post-запроса
     text_slise = part_1 + tg_name + part_2 + tg_phone + part_3

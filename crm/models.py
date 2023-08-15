@@ -1,6 +1,4 @@
 from django.db import models
-
-
 # Create your models here.
 
 # Пропишем статусы заявки
@@ -14,10 +12,6 @@ class StatusCrm(models.Model):
         verbose_name = "Статус"
         verbose_name_plural = "Статусы"
 
-
-
-
-
 class Order(models.Model):
     order_dt = models.DateTimeField(auto_now=True)
     order_name = models.CharField(max_length=200, verbose_name="Имя")
@@ -28,8 +22,6 @@ class Order(models.Model):
     # Используем PROTECT, т.к. не хотим доавать пользователя удалять статусы.
     # null-true нужно для одобрения пустоты в БД, а blank=true для пустоты в полях админ-панели django
     order_status = models.ForeignKey(StatusCrm, on_delete=models.PROTECT, null=True, blank=True, verbose_name="Статус")
-
-
 
     def __str__(self):
         return self.order_name

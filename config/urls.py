@@ -24,7 +24,9 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.first_page),
-    path('thanks/', views.thanks_page, name='thanks_page' )
-# уКАЗЫВАЕМ путь для чтения media-файлов начиная с + ниже:
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('thanks/', views.thanks_page, name='thanks_page')
+]
 
+# уКАЗЫВАЕМ путь для чтения media-файлов начиная с + ниже:
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
